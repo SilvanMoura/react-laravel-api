@@ -1,19 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
+import axios from 'axios';
 
-class Customer extends Component{
-    render(){
-        return(
-            <tr>
-                <td style={{ textAlign:"center" }}>1</td>
-                <td>Silvan Moura</td>
-                <td>exemplo@exemplo.com</td>
-                <td>
-                    <button className='mini ui blue button'>Editar</button>
-                    <button className='mini ui red button'>Deletar</button>
-                </td>
-            </tr>
-        )
-    }
+const Customer = (props)=>{
+    
+    const {id, firstName, lastName, email} = props.customer;
+
+    const onDelete = async ()=>{ 
+        const ret = await axios.delete("http://localhost:8000/api/delete/"+id);
+        
+        if (ret.status == 200) window.location.reload();
+    };
+
+    return(
+        <tr>
+            <td style={{ textAlign:"center" }}>{id}</td>
+            <td>{firstName} {lastName}</td>
+            <td>{email}</td>
+            <td>
+                <button className='mini ui blue button'>Editar</button>
+                <button className='mini ui red button' onClick={ () => onDelete() }>Deletar</button>
+            </td>
+        </tr>
+    )
+    
 }
 
 export default Customer;
