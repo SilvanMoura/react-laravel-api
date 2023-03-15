@@ -4,7 +4,7 @@ import Customer from "./Customer";
 const CustomerList = (props) =>{
     
     let customers = props.customers.customers;
-    
+
     return(
         <div className='data'>
             <table className='ui celled table'>

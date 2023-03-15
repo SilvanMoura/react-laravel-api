@@ -19,6 +19,8 @@ const App = () => {
         getCustomers();
     }, []);
 
+    
+
     return(
         <div>
             <div className="ui fixed inverted menu">
