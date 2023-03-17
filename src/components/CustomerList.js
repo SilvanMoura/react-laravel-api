@@ -1,9 +1,13 @@
 import React from 'react';
 import Customer from "./Customer";
 
-const CustomerList = (props) =>{
+const CustomerList = ({userInfo, onEdit}) =>{
     
-    let customers = props.customers.customers;
+    let customers = userInfo.customers;
+
+    const showStatus = (customer)=>{
+        onEdit(customer);
+    }
 
     return(
         <div className='data'>
@@ -19,8 +23,8 @@ const CustomerList = (props) =>{
 
                 <tbody>
                     {
-                        customers?.map( customers => {
-                        return <Customer customer = {customers} key={customers.id} />
+                        customers?.map( (customers, key) => {
+                        return <Customer customer = {customers} key={key} onStatus={(customer)=>showStatus(customer)}/>
                     })}
                 </tbody>
             </table>

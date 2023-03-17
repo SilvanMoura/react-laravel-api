@@ -7,6 +7,7 @@ import "./app.css";
 const App = () => {
 
     const [customers, setCustomers] = useState([]);
+    const [record, setRecord] = useState([]);
 
     const url = "http://localhost:8000/api/index";
 
@@ -19,7 +20,9 @@ const App = () => {
         getCustomers();
     }, []);
 
-    
+    const onEdit = (customer)=>{
+        setRecord(customer);
+    }
 
     return(
         <div>
@@ -32,35 +35,12 @@ const App = () => {
             </div>
 
             <div className="ui main container">
-                <MyForm />
+                <MyForm userRegistration={record} />
 
-                <CustomerList customers={customers} />
+                <CustomerList userInfo={customers} onEdit={(customer)=>onEdit(customer)} />
             </div>
         </div>
     )
 }
-
-/* class App extends Component{
-
-    state = {
-        customers: [],
-        url: "http://localhost:8000/api/index"
-    }
-
-    getCustomers = async () => {
-        const customers = await axios.get(this.state.url);
-        this.setCustomers({ customers: customers.data});
-    }
-
-    componentDidMount(){
-        this.getCustomers();
-    }
-
-    const [cutomers, setCustomers] = useState([]);
-
-    render(){
-        
-    }
-} */
 
 export default App;
