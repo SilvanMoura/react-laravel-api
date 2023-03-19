@@ -13,6 +13,13 @@ const MyForm = ({userRegistration})=>{
 
         axios.put("http://localhost:8000/api/update/"+userRegistration.id, userInfo)
     }
+
+    const actionCreate = (e)=>{
+
+        const userInfo = [firstName, lastName, email]; 
+
+        axios.post("http://localhost:8000/api/store/", userInfo)
+    }
         
     return(
         <form className="ui form">
@@ -62,7 +69,7 @@ const MyForm = ({userRegistration})=>{
                 { userRegistration == '' 
                     ?   
                     <div className="four wide field">
-                        <button className="ui primary button submit-button">Salvar</button>
+                        <button className="ui primary button submit-button" onClick={(e)=>actionCreate(e)} >Salvar</button>
                     </div>
                     :
                     <div className="four wide field">
