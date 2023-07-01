@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 
 const Customer = ({customer, onStatus})=>{
     
     const {id, firstName, lastName, email} = customer;
 
-    //const [arrayRecord, setArrayRecord] = useState([id, firstName, lastName, email]);
-
-    const onDelete = async ()=>{ 
-        const ret = await axios.delete("http://localhost:8000/api/delete/"+id);
+    const onDelete = async ()=>{
+        const ret = await axios.delete(`http://localhost:8000/api/delete/${id}`);
         
-        if (ret.status === '200') window.location.reload();
+        window.location.reload();
     };
 
     const onEdit = ()=>{

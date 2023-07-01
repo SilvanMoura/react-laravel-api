@@ -66,7 +66,7 @@ const MyForm = ({userRegistration})=>{
                     <input type="email" name="email" placeholder="example@example.com" value={email} onChange={(event)=>{setEmail(event.target.value)}} />
                 </div>
 
-                { userRegistration == '' 
+                { userRegistration == ''
                     ?   
                     <div className="four wide field">
                         <button className="ui primary button submit-button" onClick={(e)=>actionCreate(e)} >Salvar</button>
